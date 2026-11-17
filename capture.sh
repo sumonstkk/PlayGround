@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")"
-/usr/bin/time -p node "${RUNTIME_DIR:?}/scripts/default-capture.mjs"
+
+run() { /usr/bin/time -p "$@"; }
+script_path="$(run realpath "$0")"
+project_dir="${script_path%/*}"
+cd "$project_dir"
+: "${CAPTURE_URL:?CAPTURE_URL must be set}" "${CAPTURE_DIR:?CAPTURE_DIR must be set}"
+run mkdir -p "$CAPTURE_DIR"
+run node capture.mjs

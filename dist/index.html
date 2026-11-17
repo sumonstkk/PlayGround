@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#071019" />
+  <title>Neon Showdown — Arena Protocol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}</script>
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="game"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">N</span><span>NEON<span class="brand-light">/</span>SHOWDOWN</span></div>
+      <div class="match-label"><span class="live-dot"></span> RANKED DUEL <span class="match-divider">/</span> <b>ARENA 07</b></div>
+      <button id="sound-toggle" class="sound-toggle" aria-label="Toggle sound">♫ <span>SOUND ON</span></button>
+    </header>
+    <section class="match-hud" aria-label="Match status">
+      <div class="fighter-card player-card">
+        <div class="portrait portrait-cyan"><span>V</span><i></i></div>
+        <div class="fighter-info"><div class="fighter-name">VANGUARD <span class="you-tag">YOU</span></div><div class="fighter-sub">FRONTLINE // 01</div><div class="health-track"><div id="player-health" class="health-fill"></div></div><div class="health-caption"><span>ARMOR <b id="player-hp-text">100</b></span><span class="shield-text">SHIELD <b id="player-shield-text">40</b></span></div></div>
+      </div>
+      <div class="scoreboard"><div class="score-label">FIRST TO 3</div><div class="score-numbers"><span id="player-score">0</span><i>:</i><span id="enemy-score">0</span></div><div class="round-label">ROUND <b id="round-number">01</b></div></div>
+      <div class="fighter-card enemy-card"><div class="fighter-info"><div class="fighter-name">PHANTOM <span class="enemy-level">LVL 08</span></div><div class="fighter-sub">FLANKER // 02</div><div class="health-track enemy-track"><div id="enemy-health" class="health-fill enemy-fill"></div></div><div class="health-caption"><span>ARMOR <b id="enemy-hp-text">100</b></span><span class="shield-text enemy-shield">SHIELD <b id="enemy-shield-text">25</b></span></div></div><div class="portrait portrait-magenta"><span>P</span><i></i></div></div>
+    </section>
+    <div class="center-message" id="center-message"><div class="message-kicker">ARENA PROTOCOL</div><h1>READY<br><em>TO ENGAGE?</em></h1><p>One arena. One rival. No respawns.</p><button id="start-button" class="primary-button">ENTER THE ARENA <span>↗</span></button><div class="loading-hint">WASD MOVE <i>•</i> MOUSE AIM <i>•</i> CLICK FIRE</div></div>
+    <div id="round-banner" class="round-banner hidden"><span>ROUND</span><b>01</b><i>FIGHT!</i></div>
+    <div class="bottom-hud">
+      <div class="ability-row">
+        <div class="ability" id="dash-ability"><div class="ability-key">SHIFT</div><div class="ability-icon dash-icon">»</div><div class="ability-copy"><b>PHASE DASH</b><span>Mobility</span></div><div class="ability-cooldown" id="dash-cd"></div></div>
+        <div class="ability" id="barrier-ability"><div class="ability-key">E</div><div class="ability-icon barrier-icon">⬡</div><div class="ability-copy"><b>AEGIS WALL</b><span>Defense</span></div><div class="ability-cooldown" id="barrier-cd"></div></div>
+        <div class="weapon-card"><div class="weapon-mark">⌁</div><div><b>PULSE RIFLE</b><span>ENERGY / AUTO</span></div><div class="weapon-status"><i></i>READY</div></div>
+      </div>
+      <div class="control-tip"><span class="mouse-symbol">⌖</span> HOLD <b>LEFT CLICK</b> TO FIRE <i>·</i> <b>R</b> RESTART MATCH</div>
+    </div>
+    <div class="crosshair" id="crosshair"><i></i><b></b><i></i><span></span></div>
+    <div class="damage-flash" id="damage-flash"></div>
+    <div class="toast" id="toast"></div>
+    <div class="mobile-controls" id="mobile-controls">
+      <div class="move-pad" id="move-pad"><div class="pad-thumb"></div></div>
+      <button id="mobile-fire" class="mobile-fire">FIRE</button>
+      <button id="mobile-dash" class="mobile-ability">»</button>
+      <button id="mobile-barrier" class="mobile-ability">⬡</button>
+    </div>
+    <div class="footer-mark"><span>© 2087</span><span>NEON DISTRICT <b>—</b> SECTOR 09</span><span>BUILD 2.4.1</span></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
